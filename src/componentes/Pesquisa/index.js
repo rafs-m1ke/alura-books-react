@@ -25,6 +25,19 @@ const Subtitulo = styled.h3`
     margin-bottom: 40px;
 `
 
+const Resultado = styled.div`
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 20px 0;
+    
+    img {
+        height: 150px;
+    }
+`
+
 const Pesquisa = () => {
     const [livrosPesquisados, setLivrosPesquisados] = useState([])
 
@@ -40,6 +53,13 @@ const Pesquisa = () => {
                     setLivrosPesquisados(resultadoPesquisa)
                 }}
             />
+            {
+                livrosPesquisados.map(livro => (
+                    <Resultado>
+                        <p>{livro.nome}</p>
+                        <img src={livro.src} alt="" />
+                    </Resultado>
+            ))}
         </PesquisaContainer>
     )
 }
